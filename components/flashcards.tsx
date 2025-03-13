@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, RefreshCw, FileText } from "lucide-react";
@@ -18,10 +18,6 @@ export default function Flashcards({
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [completed, setCompleted] = useState(false);
-
-  useEffect(() => {
-    console.log("Flashcards component received:", flashcards);
-  }, [flashcards]);
 
   const handleNextCard = () => {
     if (currentCardIndex < flashcards.length - 1) {
@@ -55,7 +51,7 @@ export default function Flashcards({
         <div className="w-full max-w-md space-y-8 text-center">
           <h1 className="text-2xl font-bold">Flashcards Completed!</h1>
           <p className="text-muted-foreground">
-            You've gone through all the flashcards.
+            You&apos;ve gone through all the flashcards.
           </p>
           <div className="flex flex-col space-y-4">
             <Button onClick={handleReset} className="w-full">

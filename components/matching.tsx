@@ -22,10 +22,6 @@ export default function Matching({
   const [completed, setCompleted] = useState(false);
   const [score, setScore] = useState(0);
 
-  useEffect(() => {
-    console.log("Matching component received:", matchingItems);
-  }, [matchingItems]);
-
   // Shuffle the right side items
   useEffect(() => {
     if (!matchingItems || matchingItems.length === 0) return;

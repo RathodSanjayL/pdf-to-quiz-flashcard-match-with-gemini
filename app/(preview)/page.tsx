@@ -68,12 +68,10 @@ export default function ChatWithFiles() {
     schema: flashcardsSchema,
     initialValue: undefined,
     onError: (error) => {
-      console.error("Flashcards error:", error);
       toast.error("Failed to generate flashcards. Please try again.");
       setFiles([]);
     },
     onFinish: ({ object }) => {
-      console.log("Flashcards generated:", object);
       setFlashcards(object ?? []);
     },
   });
@@ -87,12 +85,10 @@ export default function ChatWithFiles() {
     schema: matchingExerciseSchema,
     initialValue: undefined,
     onError: (error) => {
-      console.error("Matching error:", error);
       toast.error("Failed to generate matching exercise. Please try again.");
       setFiles([]);
     },
     onFinish: ({ object }) => {
-      console.log("Matching generated:", object);
       setMatchingItems(object ?? []);
     },
   });
@@ -199,7 +195,6 @@ export default function ChatWithFiles() {
       onDrop={(e) => {
         e.preventDefault();
         setIsDragging(false);
-        console.log(e.dataTransfer.files);
         handleFileChange({
           target: { files: e.dataTransfer.files },
         } as React.ChangeEvent<HTMLInputElement>);

@@ -36,7 +36,6 @@ export async function POST(req: Request) {
       onFinish: ({ object }) => {
         const res = matchingExerciseSchema.safeParse(object);
         if (res.error) {
-          console.error("Validation error:", res.error.errors);
           throw new Error(res.error.errors.map((e) => e.message).join("\n"));
         }
       },
@@ -44,7 +43,6 @@ export async function POST(req: Request) {
 
     return result.toTextStreamResponse();
   } catch (error: any) {
-    console.error("Error in generate-matching:", error);
     return new Response(JSON.stringify({ error: error.message || "Unknown error" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
